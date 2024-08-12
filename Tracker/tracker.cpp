@@ -1198,9 +1198,10 @@ int main(int argc, char* argv[])
       return 1;
   }
 #ifdef NDEBUG
+  char serviceName[] = "";
   SERVICE_TABLE_ENTRY st[] =
   {
-    { "", nt_service_main },
+    { serviceName, nt_service_main },
     { NULL, NULL }
   };
   if (StartServiceCtrlDispatcher(st))
