@@ -13,6 +13,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{73C570AC-E7C3-451D-A5C6-7A2532F0121B}</ProjectGuid>
     <RootNamespace>XBT Tracker</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -26,17 +27,25 @@
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="..\XBT.props" />
+    <Import Project="XBT.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="..\XBT.props" />
+    <Import Project="XBT.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
     <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\Intermediate\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\Intermediate\</IntDir>
   </PropertyGroup>
   <PropertyGroup Label="Vcpkg">
     <VcpkgEnableManifest>true</VcpkgEnableManifest>
@@ -50,7 +59,7 @@
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <WholeProgramOptimization>true</WholeProgramOptimization>
-      <AdditionalIncludeDirectories>..\misc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>misc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
@@ -109,56 +118,56 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\misc\bt_misc.cpp">
+    <ClCompile Include="misc\bt_misc.cpp">
     </ClCompile>
-    <ClCompile Include="config.cpp">
+    <ClCompile Include="Tracker\config.cpp">
     </ClCompile>
-    <ClCompile Include="connection.cpp">
+    <ClCompile Include="Tracker\connection.cpp">
     </ClCompile>
-    <ClCompile Include="..\misc\database.cpp">
+    <ClCompile Include="misc\database.cpp">
     </ClCompile>
-    <ClCompile Include="epoll.cpp">
+    <ClCompile Include="Tracker\epoll.cpp">
     </ClCompile>
-    <ClCompile Include="..\misc\windows\nt_service.cpp">
+    <ClCompile Include="misc\windows\nt_service.cpp">
     </ClCompile>
-    <ClCompile Include="tracker.cpp">
+    <ClCompile Include="Tracker\tracker.cpp">
     </ClCompile>
-    <ClCompile Include="..\misc\sha1.cpp">
+    <ClCompile Include="misc\sha1.cpp">
     </ClCompile>
-    <ClCompile Include="..\misc\socket.cpp">
+    <ClCompile Include="misc\socket.cpp">
     </ClCompile>
-    <ClCompile Include="..\misc\sql_query.cpp">
+    <ClCompile Include="misc\sql_query.cpp">
     </ClCompile>
-    <ClCompile Include="StdAfx.cpp">
+    <ClCompile Include="Tracker\StdAfx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="tracker_input.cpp">
+    <ClCompile Include="Tracker\tracker_input.cpp">
     </ClCompile>
-    <ClCompile Include="transaction.cpp">
+    <ClCompile Include="Tracker\transaction.cpp">
     </ClCompile>
-    <ClCompile Include="..\misc\xcc_z.cpp">
+    <ClCompile Include="misc\xcc_z.cpp">
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="client.h" />
-    <ClInclude Include="config.h" />
-    <ClInclude Include="connection.h" />
-    <ClInclude Include="epoll.h" />
-    <ClInclude Include="..\misc\windows\nt_service.h" />
-    <ClInclude Include="resource.h" />
-    <ClInclude Include="tracker.h" />
-    <ClInclude Include="..\misc\sha1.h" />
-    <ClInclude Include="StdAfx.h" />
-    <ClInclude Include="..\misc\stream_int.h" />
-    <ClInclude Include="tracker_input.h" />
-    <ClInclude Include="transaction.h" />
+    <ClInclude Include="Tracker\client.h" />
+    <ClInclude Include="Tracker\config.h" />
+    <ClInclude Include="Tracker\connection.h" />
+    <ClInclude Include="Tracker\epoll.h" />
+    <ClInclude Include="misc\windows\nt_service.h" />
+    <ClInclude Include="Tracker\resource.h" />
+    <ClInclude Include="Tracker\tracker.h" />
+    <ClInclude Include="misc\sha1.h" />
+    <ClInclude Include="Tracker\StdAfx.h" />
+    <ClInclude Include="misc\stream_int.h" />
+    <ClInclude Include="Tracker\tracker_input.h" />
+    <ClInclude Include="Tracker\transaction.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="res\XBT Tracker.ico" />
+    <None Include="Tracker\res\XBT Tracker.ico" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="XBT Tracker.rc" />
+    <ResourceCompile Include="Tracker\XBT Tracker.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
 </Project>

@@ -1,4 +1,4 @@
 mysql_host = localhost
-mysql_user = xbt
+mysql_user = root
 mysql_password =
-mysql_database = xbt
+mysql_database = vbtorrents
